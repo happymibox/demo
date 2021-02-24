@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<!-- 結果show在自製網頁 -->
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <title>eating</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm">
+                <div>
+                    <iframe src="https://forms.gle/3x9P6i64asPLJ5F49" width="100%" height="1300" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+                </div>
+            </div>
+            <script>
+                $(function () {
+                    var timestamp = [];
+                    var name = [];
+                    var gender = [];
+
+
+                    var phone = [];
+
+
+                    $.getJSON('https://spreadsheets.google.com/feeds/list/1XUXnLq5dE5z2lZwxDnpj7GRfC414K1FkjTS11gcHEhs/ofadxuv/public/values?alt=json', function (data) {
+                        for (var i = 0; i < data.feed.entry.length; i++) {
+                            timestamp[i] = data.feed.entry[i].gsx$timestamp.$t;
+                            name[i] = data.feed.entry[i].gsx$name.$t;
+                            gender[i] = data.feed.entry[i].gsx$gender.$t;
+
+
+                            phone[i] = data.feed.entry[i].gsx$phone.$t;
+
+                            $('#producttable').append("<tr><td>" + timestamp[i] + "</td><td>" + name[i] + "</td><td>" + gender[i] + "</td><td>" + phone[i] + "</td></tr>");
+                        }
+                    });
+                });
+            </script>
+            <div class="container my-5">
+                <h1 class="text-center">demo01</h1>
+                <table class="table table-dark table-striped table-bordered table-hover table-sm ">
+                    <thead>
+                        <tr>
+                            <th scope="col">時間戳記</th>
+                            <th scope="col">姓名</th>
+                            <th scope="col">性別</th>
+                            <th scope="col">手機</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody id="producttable">
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
+        $(document).ready(function () {
+            $('.container').css('width', $(window).width());
+            $('.container').css('height', $(window).height());
+        });
+        $(window).resize(function () {
+            $('.container').css('width', $(window).width());
+            $('.container').css('height', $(window).height());
+        });
+    </script>
+
+</body>
+
+</html>
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
