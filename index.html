@@ -40,7 +40,7 @@
                     var name = [];
                     var gender = [];
                     var phone = [];
-                    var Email = [];
+                    var ail = [];
 
 
                     $.getJSON('https://spreadsheets.google.com/feeds/list/1XUXnLq5dE5z2lZwxDnpj7GRfC414K1FkjTS11gcHEhs/ofadxuv/public/values?alt=json', function (data) {
@@ -49,8 +49,8 @@
                             name[i] = data.feed.entry[i].gsx$name.$t;
                             gender[i] = data.feed.entry[i].gsx$gender.$t;
                             phone[i] = data.feed.entry[i].gsx$phone.$t;
- Email[i] = data.feed.entry[i].gsx$Email.$t;
-                            $('#producttable').append("<tr><td>" + timestamp[i] + "</td><td>" + name[i] + "</td><td>" + gender[i] + "</td><td>" + phone[i]+ "</td><td>" + Email[i] + "</td></tr>");
+                            ail[i] = data.feed.entry[i].gsx$ail.$t;
+                            $('#producttable').append("<tr><td>" + timestamp[i] + "</td><td>" + name[i] + "</td><td>" + gender[i] + "</td><td>" + phone[i]+ "</td><td>" + ail[i] + "</td></tr>");
                         }
                     });
                 });
