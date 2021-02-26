@@ -39,9 +39,8 @@
                     var timestamp = [];
                     var name = [];
                     var gender = [];
-
-
                     var phone = [];
+                    var Email = [];
 
 
                     $.getJSON('https://spreadsheets.google.com/feeds/list/1XUXnLq5dE5z2lZwxDnpj7GRfC414K1FkjTS11gcHEhs/ofadxuv/public/values?alt=json', function (data) {
@@ -49,11 +48,9 @@
                             timestamp[i] = data.feed.entry[i].gsx$timestamp.$t;
                             name[i] = data.feed.entry[i].gsx$name.$t;
                             gender[i] = data.feed.entry[i].gsx$gender.$t;
-
-
                             phone[i] = data.feed.entry[i].gsx$phone.$t;
-
-                            $('#producttable').append("<tr><td>" + timestamp[i] + "</td><td>" + name[i] + "</td><td>" + gender[i] + "</td><td>" + phone[i] + "</td></tr>");
+ Email[i] = data.feed.entry[i].gsx$Email.$t;
+                            $('#producttable').append("<tr><td>" + timestamp[i] + "</td><td>" + name[i] + "</td><td>" + gender[i] + "</td><td>" + phone[i] +Email[i] + "</td></tr>");
                         }
                     });
                 });
@@ -67,6 +64,7 @@
                             <th scope="col">姓名</th>
                             <th scope="col">性別</th>
                             <th scope="col">手機</th>
+                            <th scope="col">Email</th>
 
 
 
